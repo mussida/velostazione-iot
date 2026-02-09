@@ -31,8 +31,6 @@ void setup() {
   Serial.begin(115200);
   delay(2000);
 
-  Serial.println(F("GATEWAY LORA RX SERIAL"));
-
   loraSPI.begin(PIN_LORA_SCK, PIN_LORA_MISO, PIN_LORA_MOSI, PIN_LORA_CS);
 
   int state = radio.begin(
@@ -44,16 +42,13 @@ void setup() {
     POTENZA
   );
 
-  Serial.print(F("radio.begin() -> "));
-  Serial.println(state);
-
   if (state != RADIOLIB_ERR_NONE) {
-    Serial.println(F("ERRORE LoRa, fermo."));
-    while (true) { delay(1000); }
+    Serial.println(F("ERROR LoRa"));
+    exit(0);
   }
 
   radio.setCRC(true);
-  Serial.println(F("RX LoRa pronto"));
+  Serial.println(F("RX LoRa ready"));
 }
 
 void loop() {
