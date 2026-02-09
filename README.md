@@ -1,7 +1,7 @@
 # Velostazione IoT
 
 Repository dedicata alla componente **IoT** del progetto *Velostazione di Bologna*.  
-Contiene il firmware dei nodi LoRa installati sugli stalli e i servizi Python eseguiti sulla postazione desk basata su Raspberry Pi.
+Contiene il codice dei nodi LoRa installati sugli stalli e i servizi Python eseguiti sulla postazione desk basata su Raspberry Pi.
 
 Questa repository è separata dai repository del **backend Django** e del **frontend Angular**, al fine di mantenere distinta la logica applicativa dalla parte hardware e di integrazione edge.
 
@@ -34,7 +34,7 @@ Il sistema IoT è composto da tre elementi principali:
 ```text
 velostazione-iot/
 ├── README.md
-├── firmware/
+├── heltec/
 │   ├── nodo_stallo/
 │   │   └── nodo_stallo.ino
 │   └── gateway_rx/
@@ -49,13 +49,13 @@ velostazione-iot/
 
 ---
 
-## Firmware
+## Heltec WiFi LoRa 32 v3
 
-La cartella `firmware/` contiene il codice eseguito sui microcontrollori del sistema IoT.
+La cartella `Heltec/` contiene il codice eseguito sui microcontrollori del sistema IoT.
 
 In particolare include:
-- Il firmware del **nodo di stallo**, responsabile della lettura RFID, del feedback locale tramite buzzer e dell’invio degli eventi via LoRa;
-- Il firmware del **gateway LoRa RX**, che riceve i messaggi radio e li espone sulla porta seriale verso il Raspberry Pi.
+- Il codice del **nodo di stallo**, responsabile della lettura RFID, del feedback locale tramite buzzer e dell’invio degli eventi via LoRa;
+- Il codice del **gateway LoRa RX**, che riceve i messaggi radio e li espone sulla porta seriale verso il Raspberry Pi.
 
 Gli eventi generati dai nodi sono messaggi testuali a payload minimale, ad esempio:  
 `node=12;seq=NN;ev=rfid_scan;uid=52182D06`
